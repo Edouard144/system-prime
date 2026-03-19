@@ -1,16 +1,65 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useCallback } from 'react';
+import BootScreen from '@/components/BootScreen';
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
+import SkillsSection from '@/components/SkillsSection';
+import ProjectsSection from '@/components/ProjectsSection';
+import StatsSection from '@/components/StatsSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+import CommandTerminal from '@/components/CommandTerminal';
+import CustomCursor from '@/components/CustomCursor';
+import ScrollProgress from '@/components/ScrollProgress';
+import UniverseBackground from '@/components/UniverseBackground';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+export default function Index() {
+  const [booted, setBooted] = useState(false);
+
+  const handleBootComplete = useCallback(() => {
+    setBooted(true);
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <>
+      <BootScreen onComplete={handleBootComplete} />
+
+      {booted && (
+        <>
+          <CustomCursor />
+          <UniverseBackground />
+          <ScrollProgress />
+
+          {/* CRT + Noise overlays */}
+          <div className="crt-overlay" />
+          <div className="noise-overlay" />
+
+          <div className="relative z-10">
+            <Navbar />
+            <HeroSection />
+
+            {/* Liquid divider */}
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+            <AboutSection />
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+            <SkillsSection />
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+            <ProjectsSection />
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+            <StatsSection />
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+            <ContactSection />
+            <Footer />
+          </div>
+
+          <CommandTerminal />
+        </>
+      )}
+    </>
   );
-};
-
-const Index = PlaceholderIndex;
-
-export default Index;
+}
