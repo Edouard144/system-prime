@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import MagneticParticles from './MagneticParticles';
 
 const role = 'BACKEND & MOBILE DEVELOPER';
 
@@ -37,6 +38,7 @@ export default function HeroSection() {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="aurora-bg" />
       <div className="perspective-grid" />
+      <MagneticParticles />
 
       <div className="relative z-10 text-center px-4 max-w-4xl">
         {/* System status */}

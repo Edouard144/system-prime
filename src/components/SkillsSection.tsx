@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import DNAHelix from './DNAHelix';
 
 const skillGroups = [
   {
@@ -48,6 +49,7 @@ export default function SkillsSection() {
 
   return (
     <section id="skills" className="relative py-32 px-4" ref={ref}>
+      <DNAHelix />
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
