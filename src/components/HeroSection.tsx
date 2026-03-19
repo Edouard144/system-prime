@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import MagneticParticles from './MagneticParticles';
 
 const role = 'BACKEND & MOBILE DEVELOPER';
 
