@@ -123,8 +123,9 @@ function DeployLogs({ id }: { id: string }) {
     let i = 0;
     const interval = setInterval(() => {
       if (i < logLines.length) {
-        setLogs(prev => [...prev, logLines[i]]);
+        const current = i;
         i++;
+        setLogs(prev => [...prev, logLines[current]]);
       } else {
         clearInterval(interval);
       }
