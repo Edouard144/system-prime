@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, Github, Send } from 'lucide-react';
 
@@ -53,10 +53,10 @@ const testimonials = [
   },
   {
     name: 'SEBERA JONAS',
-    role: 'SENIOR SOFTWARE ENGINEER // WEB3 DEVELOPER',
+    role: 'SENIOR SOFTWARE ENGINEER // WEB3 DEVELOPER // ENTREPRENEUR',
     phone: '',
     telegram: 'https://t.me/OxJonaseb11',
-    github: '',
+    github: 'https://github.com/0xJonaseb11',
     text: 'Edouard is a brilliant developer with exceptional problem-solving skills. His expertise in building scalable systems and innovative solutions makes him a standout professional in the tech industry.',
     rating: 5,
   },
@@ -74,10 +74,29 @@ export default function TestimonialsSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
   const [currentPage, setCurrentPage] = useState(0);
+  const [shuffledTestimonials, setShuffledTestimonials] = useState(testimonials);
   const itemsPerPage = 4;
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+
+  // Shuffle testimonials on component mount with priority for IHIRWE, JONAS, ASHRAFU
+  useEffect(() => {
+    const priorityNames = ['IHIRWE PATRICK', 'SEBERA JONAS', 'TUYUBAHE ASHRAFU'];
+    
+    // Give each testimonial a weight (priority members have higher weight)
+    const weighted = testimonials.map(t => ({
+      ...t,
+      weight: priorityNames.includes(t.name) ? Math.random() * 0.5 + 0.5 : Math.random()
+    }));
+    
+    // Sort by weight (higher weight = higher chance to appear first)
+    const shuffled = [...weighted].sort((a, b) => b.weight - a.weight);
+    
+    // Remove weight property for display
+    setShuffledTestimonials(shuffled.map(({ weight, ...t }) => t));
+  }, []);
+
+  const totalPages = Math.ceil(shuffledTestimonials.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
-  const currentTestimonials = testimonials.slice(startIndex, startIndex + itemsPerPage);
+  const currentTestimonials = shuffledTestimonials.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <section id="testimonials" className="relative py-32 px-4" ref={ref}>
