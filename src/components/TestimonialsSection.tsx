@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Phone, Github } from 'lucide-react';
+import { Phone, Github, Send } from 'lucide-react';
 
 const testimonials = [
   {
@@ -41,6 +41,31 @@ const testimonials = [
     phone: '+250793095768',
     github: 'https://github.com/Dieudonne000',
     text: 'Edouard is an exceptional developer with deep technical expertise. His ability to build scalable systems and beautiful interfaces makes him a valuable collaborator on any project.',
+    rating: 5,
+  },
+  {
+    name: 'SEBERA JONAS',
+    role: 'SENIOR SOFTWARE ENGINEER // WEB3 DEVELOPER',
+    phone: '',
+    telegram: 'https://t.me/OxJonaseb11',
+    github: '',
+    text: 'Edouard is a brilliant developer with exceptional problem-solving skills. His expertise in building scalable systems and innovative solutions makes him a standout professional in the tech industry.',
+    rating: 5,
+  },
+  {
+    name: 'TUYUBAHE ASHRAFU',
+    role: 'FULL STACK DEVELOPER',
+    phone: '+250794901362',
+    github: 'https://github.com/ashrafutuyubahe',
+    text: 'Edouard is an outstanding developer with deep technical knowledge. His ability to deliver high-quality solutions and mentor others makes him an invaluable team member.',
+    rating: 5,
+  },
+  {
+    name: 'MUGISHA BENJAMIN',
+    role: 'DEVOPS ENGINEER // CLOUD ARCHITECT',
+    phone: '+250788000000',
+    github: 'https://github.com/mugishaB',
+    text: 'Edouard demonstrates exceptional skill in designing and deploying robust infrastructure. His collaborative approach and technical insights elevate every project he works on.',
     rating: 5,
   },
 ];
@@ -103,6 +128,17 @@ export default function TestimonialsSection() {
                     >
                       <Phone className="w-3 h-3" />
                       <span>{t.phone}</span>
+                    </a>
+                  )}
+                  {(t as any).telegram && (
+                    <a
+                      href={(t as any).telegram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-[10px] text-secondary hover:text-secondary/80 transition-colors"
+                    >
+                      <Send className="w-3 h-3" />
+                      <span>TELEGRAM</span>
                     </a>
                   )}
                   {t.github && (
