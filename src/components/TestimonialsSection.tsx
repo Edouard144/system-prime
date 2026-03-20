@@ -1,29 +1,46 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Phone, Github } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'CLIENT_01',
-    role: 'CEO // TECH STARTUP',
-    text: 'Edouard delivered a flawless backend system that scaled beyond our expectations. His attention to detail and clean architecture made maintenance a breeze.',
+    name: 'IHIRWE PATRICK',
+    role: 'SENIOR UI/UX DESIGNER',
+    phone: '+250796402848',
+    github: '',
+    text: 'Edouard transforms complex requirements into elegant, user-friendly interfaces. His backend expertise combined with design sensibility creates seamless digital experiences.',
     rating: 5,
   },
   {
-    name: 'CLIENT_02',
-    role: 'PROJECT MANAGER // FINTECH',
-    text: 'Working with Edouard was seamless. He understood our requirements from day one and delivered ahead of schedule. The mobile app he built is rock solid.',
+    name: 'IZERE SHEMA LEANDRE',
+    role: 'CEO // ECHOSOLS',
+    phone: '+250793373953',
+    github: 'https://github.com/leandre000',
+    text: 'Working with Edouard was transformative for our platform. He delivered a robust, scalable system that exceeded our expectations. True professional expertise.',
     rating: 5,
   },
   {
-    name: 'CLIENT_03',
-    role: 'CTO // E-COMMERCE',
-    text: 'Exceptional problem-solving skills. Edouard tackled our most complex database challenges and optimized query performance by 300%. Highly recommended.',
+    name: 'BIENVENUE ALLIANCE',
+    role: 'CEO // BLINKTECH',
+    phone: '+250735057868',
+    github: 'https://github.com/alliance74',
+    text: 'Edouard built our entire mobile infrastructure from scratch. His precision, reliability, and technical depth made him an essential partner for our startup.',
     rating: 5,
   },
   {
-    name: 'CLIENT_04',
-    role: 'FOUNDER // SAAS PLATFORM',
-    text: 'Edouard brought our vision to life with precision. His full-stack expertise and proactive communication made him an invaluable part of our team.',
+    name: 'RUKUNDO FURAHA DIVIN',
+    role: 'CEO // CILA LABS',
+    phone: '',
+    github: 'https://github.com/divin-d1',
+    text: 'Exceptional developer with deep understanding of system architecture. Edouard delivered solutions that scaled effortlessly under heavy load.',
+    rating: 5,
+  },
+  {
+    name: 'KANEZA AMANDINE',
+    role: 'UI/UX DESIGNER // CO-FOUNDER BLINKTECH',
+    phone: '+250793131491',
+    github: '',
+    text: 'Edouard brings rare combination of technical excellence and creative problem-solving. Our collaboration resulted in products that users love.',
     rating: 5,
   },
 ];
@@ -75,6 +92,30 @@ export default function TestimonialsSection() {
                 <div className="text-xs font-bold text-primary tracking-wider">{t.name}</div>
                 <div className="text-[10px] text-muted-foreground tracking-widest uppercase mt-1">
                   {t.role}
+                </div>
+                <div className="flex items-center gap-4 mt-2">
+                  {t.phone && (
+                    <a
+                      href={`https://wa.me/${t.phone.replace(/\D/g, '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-[10px] text-secondary hover:text-secondary/80 transition-colors"
+                    >
+                      <Phone className="w-3 h-3" />
+                      <span>{t.phone}</span>
+                    </a>
+                  )}
+                  {t.github && (
+                    <a
+                      href={t.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Github className="w-3 h-3" />
+                      <span>GITHUB</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

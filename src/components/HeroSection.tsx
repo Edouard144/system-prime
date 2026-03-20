@@ -106,7 +106,7 @@ export default function HeroSection() {
             [ INITIATE_CONTACT ]
           </button>
           <a
-            href="../public/CV.html"
+            href="/CV.html"
             download
             className="cursor-none terminal-panel px-8 py-3 text-xs uppercase tracking-widest text-foreground hover:bg-primary/10 transition-all duration-200 flex items-center gap-2"
           >
