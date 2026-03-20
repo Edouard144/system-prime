@@ -60,14 +60,6 @@ const testimonials = [
     text: 'Edouard is an outstanding developer with deep technical knowledge. His ability to deliver high-quality solutions and mentor others makes him an invaluable team member.',
     rating: 5,
   },
-  {
-    name: 'MUGISHA BENJAMIN',
-    role: 'DEVOPS ENGINEER // CLOUD ARCHITECT',
-    phone: '+250788000000',
-    github: 'https://github.com/mugishaB',
-    text: 'Edouard demonstrates exceptional skill in designing and deploying robust infrastructure. His collaborative approach and technical insights elevate every project he works on.',
-    rating: 5,
-  },
 ];
 
 export default function TestimonialsSection() {
