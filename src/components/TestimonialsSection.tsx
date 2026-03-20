@@ -4,6 +4,14 @@ import { Phone, Github } from 'lucide-react';
 
 const testimonials = [
   {
+    name: 'JEAN DIEUDONNE MUNEZA',
+    role: 'FULL STACK DEVELOPER // UI/UX DESIGNER',
+    phone: '',
+    github: 'https://github.com/Dieudonne000',
+    text: 'Edouard is an exceptional developer with deep technical expertise. His ability to build scalable systems and beautiful interfaces makes him a valuable collaborator on any project.',
+    rating: 5,
+  },
+  {
     name: 'IHIRWE PATRICK',
     role: 'SENIOR UI/UX DESIGNER',
     phone: '+250796402848',
@@ -29,8 +37,8 @@ const testimonials = [
   },
   {
     name: 'RUKUNDO FURAHA DIVIN',
-    role: 'CEO // ... LABS',
-    phone: '',
+    role: 'CEO // SICILY LABS',
+    phone: '+250792050511',
     github: 'https://github.com/divin-d1',
     text: 'Exceptional developer with deep understanding of system architecture. Edouard delivered solutions that scaled effortlessly under heavy load.',
     rating: 5,
