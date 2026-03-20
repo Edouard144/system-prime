@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import MagneticParticles from './MagneticParticles';
+import { Download } from 'lucide-react';
 
 const role = 'BACKEND & MOBILE DEVELOPER';
 
