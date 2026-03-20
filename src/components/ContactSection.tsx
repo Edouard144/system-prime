@@ -90,6 +90,27 @@ export default function ContactSection() {
               [ VIEW_PROFILE ]
             </a>
           </motion.div>
+
+          {/* Telegram */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5 }}
+            className="terminal-panel p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+          >
+            <div>
+              <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">TELEGRAM</div>
+              <div className="text-sm text-primary tracking-wider">@CHEEVAY7</div>
+            </div>
+            <a
+              href="https://t.me/Cheevay7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-none text-[10px] uppercase tracking-widest px-4 py-2 border border-secondary/30 text-secondary hover:bg-secondary/10 transition-all"
+            >
+              [ OPEN_TELEGRAM ]
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>
