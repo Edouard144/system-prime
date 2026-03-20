@@ -29,7 +29,7 @@ const testimonials = [
   },
   {
     name: 'RUKUNDO FURAHA DIVIN',
-    role: 'CEO // CILA LABS',
+    role: 'CEO // ... LABS',
     phone: '',
     github: 'https://github.com/divin-d1',
     text: 'Exceptional developer with deep understanding of system architecture. Edouard delivered solutions that scaled effortlessly under heavy load.',
@@ -125,3 +125,4 @@ export default function TestimonialsSection() {
     </section>
   );
 }
+
