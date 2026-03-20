@@ -97,7 +97,7 @@ export default function StatsSection() {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <WorldClock city="KIGALI" tz="Africa/Kigali" />
-            <WorldClock city="LONDON" tz="Europe/London" />
+            <WorldClock city="LONDON [GMT]" tz="Europe/London" />
             <WorldClock city="NEW YORK" tz="America/New_York" />
           </div>
         </motion.div>
