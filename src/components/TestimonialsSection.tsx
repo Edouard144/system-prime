@@ -20,11 +20,11 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: 'RUKUNDO FURAHA DIVIN',
-    role: 'CEO // SICILY LABS',
-    phone: '+250792050511',
-    github: 'https://github.com/divin-d1',
-    text: 'Exceptional developer with deep understanding of system architecture. Edouard delivered solutions that scaled effortlessly under heavy load.',
+    name: 'TUYUBAHE ASHRAFU',
+    role: 'FULL STACK DEVELOPER',
+    phone: '+250794901362',
+    github: 'https://github.com/ashrafutuyubahe',
+    text: 'Edouard is an outstanding developer with deep technical knowledge. His ability to deliver high-quality solutions and mentor others makes him an invaluable team member.',
     rating: 5,
   },
   {
@@ -44,6 +44,14 @@ const testimonials = [
     rating: 5,
   },
   {
+    name: 'KEZA DELICE',
+    role: 'FULL STACK DEVELOPER',
+    phone: '+250735850922',
+    github: 'https://github.com/Delice7-del',
+    text: 'Edouard is a talented developer with excellent problem-solving abilities. His dedication to quality and innovative approach makes him a great collaborator on any project.',
+    rating: 5,
+  },
+  {
     name: 'SEBERA JONAS',
     role: 'SENIOR SOFTWARE ENGINEER // WEB3 DEVELOPER',
     phone: '',
@@ -53,11 +61,11 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: 'TUYUBAHE ASHRAFU',
-    role: 'FULL STACK DEVELOPER',
-    phone: '+250794901362',
-    github: 'https://github.com/ashrafutuyubahe',
-    text: 'Edouard is an outstanding developer with deep technical knowledge. His ability to deliver high-quality solutions and mentor others makes him an invaluable team member.',
+    name: 'RUKUNDO FURAHA DIVIN',
+    role: 'CEO // SICILY LABS',
+    phone: '+250792050511',
+    github: 'https://github.com/divin-d1',
+    text: 'Exceptional developer with deep understanding of system architecture. Edouard delivered solutions that scaled effortlessly under heavy load.',
     rating: 5,
   },
 ];
