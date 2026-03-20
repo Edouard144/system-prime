@@ -7,7 +7,7 @@ const testimonials = [
     name: 'IHIRWE PATRICK',
     role: 'SENIOR UI/UX DESIGNER',
     phone: '+250796402848',
-    github: '',
+    github: 'https://github.com/ihirwepatrick',
     text: 'Edouard transforms complex requirements into elegant, user-friendly interfaces. His backend expertise combined with design sensibility creates seamless digital experiences.',
     rating: 5,
   },
