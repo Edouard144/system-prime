@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TUYUBAHE Edouard — CV 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --bg:        #03040a;
+      --panel:     #09090f;
+      --panel2:    #0d0d18;
+      --border:    #1a1a2e;
+      --cyan:      #00e5ff;
+      --cyan-dim:  #007a8a;
+      --gold:      #D4AF37;
+      --gold-dim:  #7a6010;
+      --white:     #f0f0ff;
+      --soft:      #c8c8d4;
+      --dim:       #52525a;
+      --green:     #06d6a0;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-disp: 'Cinzel', serif;
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a1a2e;
+      font-family: var(--font-mono);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 60px;
+      min-height: 100vh;
+    }
+
+    /* ============================================================
+       DOWNLOAD BUTTON — outside the CV sheet
+    ============================================================ */
+    .download-bar {
+      width: 210mm;
+      max-width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .btn-download {
+      background: transparent;
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 8px 20px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-download:hover {
+      background: var(--cyan);
+      color: #000;
+    }
+
+    .btn-download svg {
+      width: 14px; height: 14px;
+      fill: currentColor;
+    }
+
+    /* ============================================================
+       CV SHEET — A4 proportions
+    ============================================================ */
+    .cv-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      max-width: 100%;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(0,229,255,0.08), 0 0 0 1px var(--border);
+    }
+
+    /* CRT scanlines */
+    .cv-sheet::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.06) 3px,
+        rgba(0,0,0,0.06) 4px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Left cyan strip */
+    .cv-sheet::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 3px; height: 100%;
+      background: var(--cyan);
+      z-index: 2;
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    .header {
+      position: relative;
+      background: var(--panel2);
+      padding: 22px 24px 18px 24px;
+      border-bottom: 1px solid var(--gold);
+      z-index: 1;
+    }
+
+    .header-top-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--cyan);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    /* Photo */
+    .photo-frame {
+      position: relative;
+      flex-shrink: 0;
+      width: 84px; height: 84px;
+    }
+
+    .photo-frame img {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Cyan ring */
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cyan);
+      z-index: 3;
+    }
+
+    /* Outer dim ring */
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      border: 0.5px solid var(--cyan-dim);
+      z-index: 1;
+    }
+
+    /* Bracket corners */
+    .bracket { position: absolute; z-index: 4; }
+    .bracket-tl { top: -10px; left: -10px; border-top: 1.5px solid var(--cyan); border-left: 1.5px solid var(--cyan); width: 12px; height: 12px; }
+    .bracket-tr { top: -10px; right: -10px; border-top: 1.5px solid var(--cyan); border-right: 1.5px solid var(--cyan); width: 12px; height: 12px; }
+    .bracket-bl { bottom: -10px; left: -10px; border-bottom: 1.5px solid var(--cyan); border-left: 1.5px solid var(--cyan); width: 12px; height: 12px; }
+    .bracket-br { bottom: -10px; right: -10px; border-bottom: 1.5px solid var(--cyan); border-right: 1.5px solid var(--cyan); width: 12px; height: 12px; }
+
+    /* Name block */
+    .name-block { flex: 1; }
+
+    .name-line {
+      font-family: var(--font-disp);
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      line-height: 1.1;
+    }
+
+    .name-line span:first-child { color: var(--white); }
+    .name-line span:last-child  { color: var(--cyan); }
+
+    .role-line {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      font-size: 7.5px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--dim);
+      margin-top: 4px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: 7px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      color: var(--green);
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    /* Stats strip */
+    .stats-strip {
+      display: flex;
+      border-top: 1px solid var(--border);
+      margin-top: 14px;
+    }
+
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      padding: 7px 4px;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-label {
+      font-size: 5.5px;
+      letter-spacing: 1.5px;
+      color: var(--dim);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .stat-val {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--cyan);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       TWO COLUMN BODY
+    ============================================================ */
+    .body-cols {
+      display: grid;
+      grid-template-columns: 58mm 1fr;
+      min-height: 200mm;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Vertical divider */
+    .body-cols::before {
+      content: '';
+      position: absolute;
+      left: 58mm;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    /* LEFT COLUMN */
+    .col-left {
+      padding: 18px 14px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* RIGHT COLUMN */
+    .col-right {
+      padding: 18px 16px 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* ============================================================
+       SECTION TITLES
+    ============================================================ */
+    .sec-title {
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--gold);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sec-title::before {
+      content: '';
+      width: 4px; height: 4px;
+      background: var(--cyan);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 7px;
+    }
+
+    .contact-label {
+      color: var(--dim);
+      font-weight: 700;
+      letter-spacing: 1px;
+      min-width: 28px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+    }
+
+    .contact-val {
+      color: var(--soft);
+      word-break: break-all;
+    }
+
+    /* ============================================================
+       SKILLS
+    ============================================================ */
+    .skill-list { display: flex; flex-direction: column; gap: 7px; }
+
+    .skill-item { display: flex; align-items: center; gap: 6px; }
+
+    .skill-label {
+      font-size: 7px;
+      color: var(--soft);
+      min-width: 52px;
+      flex-shrink: 0;
+    }
+
+    .skill-track {
+      flex: 1;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--cyan);
+    }
+
+    .skill-fill.gold { background: var(--gold); }
+
+    .skill-pct {
+      font-size: 6px;
+      color: var(--dim);
+      min-width: 22px;
+      text-align: right;
+    }
+
+    /* ============================================================
+       LANGUAGES
+    ============================================================ */
+    .lang-list { display: flex; flex-direction: column; gap: 7px; }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5px;
+    }
+
+    .lang-name { color: var(--soft); font-weight: 500; }
+    .lang-level { color: var(--dim); font-size: 7px; }
+
+    /* ============================================================
+       TOOLS
+    ============================================================ */
+    .tools-list { display: flex; flex-direction: column; gap: 6px; }
+
+    .tool-item {
+      font-size: 7.5px;
+      color: var(--soft);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tool-item::before {
+      content: '›';
+      color: var(--cyan);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       EDUCATION
+    ============================================================ */
+    .edu-item { margin-bottom: 8px; }
+    .edu-title { font-size: 8px; font-weight: 700; color: var(--white); }
+    .edu-sub   { font-size: 7px; color: var(--dim); margin-top: 2px; }
+    .edu-note  { font-size: 7px; color: var(--soft); margin-top: 3px; }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about-text {
+      font-size: 8px;
+      color: var(--soft);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ============================================================
+       EXPERIENCE
+    ============================================================ */
+    .exp-block { margin-bottom: 14px; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+
+    .exp-title {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .exp-date {
+      font-size: 7px;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .exp-sub {
+      font-size: 7px;
+      font-style: italic;
+      color: var(--dim);
+      margin-bottom: 7px;
+    }
+
+    .bullet-list { display: flex; flex-direction: column; gap: 5px; }
+
+    .bullet-item {
+      display: flex;
+      gap: 7px;
+      font-size: 7.5px;
+      color: var(--soft);
+      line-height: 1.6;
+    }
+
+    .bullet-item::before {
+      content: '›';
+      color: var(--cyan);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+
+    /* ============================================================
+       PROJECT CARDS
+    ============================================================ */
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-card {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      border-left: 2.5px solid var(--cyan);
+      padding: 11px 13px 10px;
+      position: relative;
+    }
+
+    .project-card:hover {
+      border-color: var(--cyan-dim);
+    }
+
+    .proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .proj-num {
+      font-size: 6px;
+      color: var(--dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .proj-title {
+      font-family: var(--font-disp);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 2px;
+    }
+
+    .proj-badge {
+      font-size: 6px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 2px 7px;
+      background: var(--green);
+      color: #000;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .proj-role {
+      font-size: 7px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .proj-desc {
+      font-size: 7.5px;
+      font-style: italic;
+      color: var(--soft);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .proj-results {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-bottom: 8px;
+    }
+
+    .proj-result {
+      display: flex;
+      gap: 6px;
+      font-size: 7px;
+      color: var(--soft);
+      line-height: 1.5;
+    }
+
+    .proj-result::before {
+      content: '›';
+      color: var(--cyan);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .proj-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .stack-tag {
+      font-size: 6px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 6px;
+      border: 0.5px solid var(--cyan-dim);
+      color: var(--cyan);
+      background: rgba(0,229,255,0.05);
+    }
+
+    .proj-link {
+      font-size: 6px;
+      color: var(--gold-dim);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .cv-footer {
+      background: var(--panel2);
+      border-top: 1px solid var(--cyan);
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-left, .footer-right {
+      font-size: 6px;
+      color: var(--dim);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .footer-center {
+      font-size: 6.5px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 2px;
+    }
+
+    /* ============================================================
+       PAGE BREAK — for print
+    ============================================================ */
+    .page-break {
+      width: 100%;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.3;
+      margin: 0;
+      position: relative;
+    }
+
+    .page-label {
+      position: absolute;
+      right: 16px;
+      top: -8px;
+      font-size: 6px;
+      color: var(--dim);
+      letter-spacing: 2px;
+      background: var(--bg);
+      padding: 0 6px;
+    }
+
+    /* Page 2 header */
+    .page2-header {
+      background: var(--panel2);
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page2-name {
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 3px;
+    }
+
+    .page2-label {
+      font-size: 7px;
+      color: var(--dim);
+      letter-spacing: 2px;
+    }
+
+    /* Projects section on page 2 */
+    .page2-body {
+      padding: 16px 18px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================================
+       PRINT STYLES
+    ============================================================ */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+
+      .download-bar { display: none; }
+
+      .cv-sheet {
+        width: 210mm;
+        min-height: 297mm;
+        box-shadow: none;
+        margin: 0;
+        page-break-after: always;
+      }
+
+      .page-break { page-break-after: always; }
+      .page2-header { margin-top: 0; }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 600px) {
+      .cv-sheet { width: 100%; }
+      .download-bar { width: 100%; }
+      .body-cols { grid-template-columns: 1fr; }
+      .body-cols::before { display: none; }
+      .name-line { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- DOWNLOAD BUTTON -->
+<div class="download-bar">
+  <button class="btn-download" onclick="window.print()">
+    <svg viewBox="0 0 24 24"><path d="M12 16l-4-4h3V4h2v8h3l-4 4zm-6 2h12v2H6v-2z"/></svg>
+    DOWNLOAD CV
+  </button>
+</div>
+
+<!-- ════════════════════════════════════════
+     CV SHEET
+════════════════════════════════════════ -->
+<div class="cv-sheet">
+
+  <!-- ══ HEADER ══════════════════════════════════════════ -->
+  <header class="header">
+    <div class="header-top-bar"></div>
+
+    <div class="header-inner">
+
+      <!-- Photo -->
+      <div class="photo-frame">
+        <span class="bracket bracket-tl"></span>
+        <span class="bracket bracket-tr"></span>
+        <span class="bracket bracket-bl"></span>
+        <span class="bracket bracket-br"></span>
+        <img src="Screenshot_2025-08-20_214911.png"
+             alt="TUYUBAHE Edouard"
+             onerror="this.style.display='none'; this.parentElement.querySelector('.photo-placeholder').style.display='flex'"/>
+        <div class="photo-placeholder" style="
+          display:none;
+          width:80px; height:80px; border-radius:50%;
+          background:var(--panel2);
+          border:1px solid var(--cyan-dim);
+          align-items:center; justify-content:center;
+          flex-direction:column; gap:3px;
+          font-size:6px; color:var(--dim); letter-spacing:1px;
+          text-align:center;
+        ">
+          <span>[ PHOTO ]</span>
+          <span>ET</span>
+        </div>
+      </div>
+
+      <!-- Name + info -->
+      <div class="name-block">
+        <div class="name-line">
+          <span>TUYUBAHE </span><span>EDOUARD</span>
+        </div>
+        <div class="role-line">
+          Backend &amp; Mobile Developer &nbsp;//&nbsp; System Architect
+        </div>
+        <div class="tagline">
+          "Precision fuels progress. The best systems are invisible — until they're needed."
+        </div>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          AVAILABLE FOR HIRE &nbsp;·&nbsp; FREELANCER &nbsp;·&nbsp; KIGALI, RWANDA
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+      <div class="stat-item">
+        <span class="stat-label">Experience</span>
+        <span class="stat-val">2+ YRS</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Coding</span>
+        <span class="stat-val">3 YRS</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Projects</span>
+        <span class="stat-val">10+</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Tech Stacks</span>
+        <span class="stat-val">15+</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Last Deploy</span>
+        <span class="stat-val">2026</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Status</span>
+        <span class="stat-val" style="color:var(--green)">ONLINE</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══ TWO COLUMN BODY ════════════════════════════════ -->
+  <div class="body-cols">
+
+    <!-- ══ LEFT COLUMN ══════════════════════════════════ -->
+    <div class="col-left">
+
+      <!-- CONTACT -->
+      <section>
+        <div class="sec-title">Contact Protocols</div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <span class="contact-val">edouardtuyubahe@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">WhatsApp</span>
+            <span class="contact-val">+250 791 980 789</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-val">github.com/Edouard144</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Portfolio</span>
+            <span class="contact-val">edouard-chv.onrender.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Location</span>
+            <span class="contact-val">Kigali, Rwanda</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Timezone</span>
+            <span class="contact-val">CAT — UTC+2</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section>
+        <div class="sec-title">Core Modules</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <span class="skill-label">Node.js</span>
+            <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+            <span class="skill-pct">95%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Express.js</span>
+            <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+            <span class="skill-pct">95%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">React.js</span>
+            <div class="skill-track"><div class="skill-fill" style="width:92%"></div></div>
+            <span class="skill-pct">92%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Next.js</span>
+            <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+            <span class="skill-pct">88%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">PostgreSQL</span>
+            <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+            <span class="skill-pct">90%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">TypeScript</span>
+            <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+            <span class="skill-pct">88%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Tailwind</span>
+            <div class="skill-track"><div class="skill-fill" style="width:95%"></div></div>
+            <span class="skill-pct">95%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">React Native</span>
+            <div class="skill-track"><div class="skill-fill gold" style="width:80%"></div></div>
+            <span class="skill-pct">80%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Spring Boot</span>
+            <div class="skill-track"><div class="skill-fill gold" style="width:75%"></div></div>
+            <span class="skill-pct">75%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Django</span>
+            <div class="skill-track"><div class="skill-fill gold" style="width:70%"></div></div>
+            <span class="skill-pct">70%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Laravel</span>
+            <div class="skill-track"><div class="skill-fill gold" style="width:72%"></div></div>
+            <span class="skill-pct">72%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-label">Docker</span>
+            <div class="skill-track"><div class="skill-fill gold" style="width:70%"></div></div>
+            <span class="skill-pct">70%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- LANGUAGES -->
+      <section>
+        <div class="sec-title">Languages</div>
+        <div class="lang-list">
+          <div class="lang-item"><span class="lang-name">TypeScript</span><span class="lang-level">Primary</span></div>
+          <div class="lang-item"><span class="lang-name">JavaScript</span><span class="lang-level">Advanced</span></div>
+          <div class="lang-item"><span class="lang-name">Python</span><span class="lang-level">Advanced</span></div>
+          <div class="lang-item"><span class="lang-name">Java</span><span class="lang-level">Intermediate</span></div>
+          <div class="lang-item"><span class="lang-name">C++</span><span class="lang-level">Intermediate</span></div>
+          <div class="lang-item"><span class="lang-name">C#</span><span class="lang-level">Intermediate</span></div>
+        </div>
+      </section>
+
+      <!-- TOOLS -->
+      <section>
+        <div class="sec-title">Tools</div>
+        <div class="tools-list">
+          <div class="tool-item">Git / GitHub</div>
+          <div class="tool-item">Docker / CI/CD</div>
+          <div class="tool-item">REST APIs / Swagger</div>
+          <div class="tool-item">JWT / Auth Systems</div>
+          <div class="tool-item">node-cron / NeonDB</div>
+          <div class="tool-item">Vite / shadcn/ui</div>
+          <div class="tool-item">Framer Motion</div>
+          <div class="tool-item">Radix UI / Zod</div>
+          <div class="tool-item">Africa's Talking SMS</div>
+          <div class="tool-item">Postman / Insomnia</div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section>
+        <div class="sec-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-title">Software Engineering</div>
+          <div class="edu-sub">Currently Pursuing · Kigali, Rwanda</div>
+          <div class="edu-note">Complemented by 3 years of self-directed learning and 10+ deployed production projects.</div>
+        </div>
+      </section>
+
+    </div><!-- /col-left -->
+
+    <!-- ══ RIGHT COLUMN ═════════════════════════════════ -->
+    <div class="col-right">
+
+      <!-- ABOUT -->
+      <section>
+        <div class="sec-title">Human Interface</div>
+        <p class="about-text">
+          Backend &amp; Mobile Developer with 2+ years of professional experience
+          building scalable web applications, fintech platforms, real estate
+          marketplaces, and developer infrastructure tools. Passionate about
+          engineering solutions that solve real problems with precision and
+          performance. Building the digital future of Rwanda — one system at a time.
+        </p>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section>
+        <div class="sec-title">Operations History</div>
+
+        <div class="exp-block">
+          <div class="exp-header">
+            <span class="exp-title">Freelance Fullstack Developer</span>
+            <span class="exp-date">2023 — Present</span>
+          </div>
+          <div class="exp-sub">Remote · Global Clients · Open to Work</div>
+          <div class="bullet-list">
+            <div class="bullet-item">Built SmartSCCO — complete digital banking platform for savings cooperatives with fraud detection, loan automation, and SMS alerts</div>
+            <div class="bullet-item">Engineered UmurageTrust — high-concurrency real estate marketplace handling thousands of simultaneous listings in Rwanda</div>
+            <div class="bullet-item">Developed StayAwake — server-side uptime tool adopted globally, runs browser-independently via node-cron scheduler</div>
+            <div class="bullet-item">Delivered EDRIX Mission Control — multi-tenant DevOps dashboard with webhooks, API keys, billing, and job tracking</div>
+            <div class="bullet-item">Created Gym frontend with Next.js 13+, Framer Motion animations, Radix UI and React Hook Form + Zod validation</div>
+          </div>
+        </div>
+
+        <div class="exp-block">
+          <div class="exp-header">
+            <span class="exp-title">Self-Directed Engineering</span>
+            <span class="exp-date">2022 — 2023</span>
+          </div>
+          <div class="exp-sub">Kigali, Rwanda · Full-time Learning &amp; Building</div>
+          <div class="bullet-list">
+            <div class="bullet-item">Mastered MERN stack through intensive project-based learning — built 5+ full-stack applications</div>
+            <div class="bullet-item">Explored mobile development with React Native and Swift — cross-platform and native iOS</div>
+            <div class="bullet-item">Studied system design, database architecture, REST API security, and backend performance patterns</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS PREVIEW -->
+      <section>
+        <div class="sec-title">Featured Deployments</div>
+        <div class="projects-grid">
+
+          <!-- SmartSCCO -->
+          <div class="project-card">
+            <div class="proj-num">Deployment 01</div>
+            <div class="proj-header">
+              <div class="proj-title">SmartSCCO</div>
+              <div class="proj-badge">Active</div>
+            </div>
+            <div class="proj-role">Fullstack Developer · Fintech Platform</div>
+            <div class="proj-desc">Complete digital banking platform for savings cooperatives in Rwanda.</div>
+            <div class="proj-results">
+              <div class="proj-result">Automated loan tracking, fraud detection &amp; SMS alerts via Africa's Talking</div>
+              <div class="proj-result">Credit scoring algorithm, KYC verification &amp; multi-branch admin dashboard</div>
+            </div>
+            <div class="proj-footer">
+              <div class="stack-tags">
+                <span class="stack-tag">Express.js</span>
+                <span class="stack-tag">PostgreSQL</span>
+                <span class="stack-tag">React</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">JWT</span>
+              </div>
+              <div class="proj-link">github.com/Edouard144/SmartSCCO<br/>smartscco-api.onrender.com/api-docs</div>
+            </div>
+          </div>
+
+          <!-- UmurageTrust -->
+          <div class="project-card">
+            <div class="proj-num">Deployment 02</div>
+            <div class="proj-header">
+              <div class="proj-title">UmurageTrust</div>
+              <div class="proj-badge">Active</div>
+            </div>
+            <div class="proj-role">Fullstack Developer · Real Estate Marketplace</div>
+            <div class="proj-desc">High-concurrency property marketplace connecting buyers and sellers across Rwanda.</div>
+            <div class="proj-results">
+              <div class="proj-result">Engineered PostgreSQL database handling thousands of concurrent listings</div>
+              <div class="proj-result">Seamless Next.js frontend with advanced filtering, verified listings &amp; secure auth</div>
+            </div>
+            <div class="proj-footer">
+              <div class="stack-tags">
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">PostgreSQL</span>
+                <span class="stack-tag">Next.js</span>
+                <span class="stack-tag">REST APIs</span>
+              </div>
+              <div class="proj-link">github.com/Edouard144/UmurageTrust<br/>umuragetrust-backend.onrender.com/api/docs</div>
+            </div>
+          </div>
+
+          <!-- StayAwake -->
+          <div class="project-card">
+            <div class="proj-num">Deployment 03</div>
+            <div class="proj-header">
+              <div class="proj-title">StayAwake</div>
+              <div class="proj-badge">Active</div>
+            </div>
+            <div class="proj-role">Fullstack Developer · Developer Tool</div>
+            <div class="proj-desc">Server-side uptime tool keeping free-tier hosted sites alive permanently.</div>
+            <div class="proj-results">
+              <div class="proj-result">Browser-independent node-cron scheduler — pings sites 24/7 with zero downtime</div>
+              <div class="proj-result">JWT auth, multi-site management, custom ping intervals, pause/resume controls</div>
+            </div>
+            <div class="proj-footer">
+              <div class="stack-tags">
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">NeonDB</span>
+                <span class="stack-tag">node-cron</span>
+                <span class="stack-tag">JWT</span>
+              </div>
+              <div class="proj-link">edouard144.github.io/StayAwake<br/>github.com/Edouard144/StayAwake</div>
+            </div>
+          </div>
+
+          <!-- EDRIX -->
+          <div class="project-card">
+            <div class="proj-num">Deployment 04</div>
+            <div class="proj-header">
+              <div class="proj-title">EDRIX Mission Control</div>
+              <div class="proj-badge">Active</div>
+            </div>
+            <div class="proj-role">Fullstack Developer · DevOps Dashboard</div>
+            <div class="proj-desc">Full-stack multi-tenant DevOps dashboard for managing developer resources at scale.</div>
+            <div class="proj-results">
+              <div class="proj-result">Multi-tenant org system, webhook &amp; API key management, background job tracking</div>
+              <div class="proj-result">Billing &amp; subscription module, performance analytics — deployed Vercel + Render</div>
+            </div>
+            <div class="proj-footer">
+              <div class="stack-tags">
+                <span class="stack-tag">React 18</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">SQLite</span>
+                <span class="stack-tag">Vite</span>
+              </div>
+              <div class="proj-link">edrix-eight.vercel.app<br/>edrix-api.onrender.com</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /col-right -->
+  </div><!-- /body-cols -->
+
+  <!-- ══ FOOTER ══════════════════════════════════════════ -->
+  <footer class="cv-footer">
+    <span class="footer-left">TUYUBAHE.EDOUARD // 2026</span>
+    <span class="footer-center">ALL SYSTEMS OPERATIONAL</span>
+    <span class="footer-right">edouard-chv.onrender.com</span>
+  </footer>
+
+</div><!-- /cv-sheet -->
+
+</body>
+</html>
