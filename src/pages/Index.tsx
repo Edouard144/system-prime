@@ -59,6 +59,7 @@ export default function Index() {
           </div>
 
           <CommandTerminal />
+          <EasterEgg />
         </>
       )}
     </>
