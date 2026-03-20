@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, Github, Send } from 'lucide-react';
 
@@ -73,6 +73,11 @@ const testimonials = [
 export default function TestimonialsSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+  const startIndex = currentPage * itemsPerPage;
+  const currentTestimonials = testimonials.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <section id="testimonials" className="relative py-32 px-4" ref={ref}>
@@ -92,9 +97,9 @@ export default function TestimonialsSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-4">
-          {testimonials.map((t, i) => (
+          {currentTestimonials.map((t, i) => (
             <motion.div
-              key={i}
+              key={`${currentPage}-${i}`}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.15 * i, duration: 0.5 }}
@@ -157,6 +162,26 @@ export default function TestimonialsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-6 mt-16">
+            <button
+              onClick={() => setCurrentPage(p => Math.max(0, p - 1))}
+              disabled={currentPage === 0}
+              className="cursor-none text-xs uppercase tracking-widest px-6 py-3 border border-primary/40 text-primary bg-primary/5 hover:bg-primary/15 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all disabled:opacity-30 disabled:cursor-not-allowed rounded-sm"
+            >
+              ◄ PREV
+            </button>
+            <button
+              onClick={() => setCurrentPage(p => Math.min(totalPages - 1, p + 1))}
+              disabled={currentPage === totalPages - 1}
+              className="cursor-none text-xs uppercase tracking-widest px-6 py-3 border border-primary/40 text-primary bg-primary/5 hover:bg-primary/15 hover:border-primary/60 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all disabled:opacity-30 disabled:cursor-not-allowed rounded-sm"
+            >
+              NEXT ►
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
