@@ -5,6 +5,7 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import SkillsSection from '@/components/SkillsSection';
 import ProjectsSection from '@/components/ProjectsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import StatsSection from '@/components/StatsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -12,6 +13,7 @@ import CommandTerminal from '@/components/CommandTerminal';
 import CustomCursor from '@/components/CustomCursor';
 import ScrollProgress from '@/components/ScrollProgress';
 import UniverseBackground from '@/components/UniverseBackground';
+import EasterEgg from '@/components/EasterEgg';
 
 export default function Index() {
   const [booted, setBooted] = useState(false);
@@ -53,11 +55,15 @@ export default function Index() {
             <StatsSection />
             <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
+            <TestimonialsSection />
+            <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
             <ContactSection />
             <Footer />
           </div>
 
           <CommandTerminal />
+          <EasterEgg />
         </>
       )}
     </>
