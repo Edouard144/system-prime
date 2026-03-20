@@ -7,6 +7,9 @@ export default function CustomCursor() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Restore default cursor
+    document.body.style.cursor = 'default';
+    
     const move = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
       setVisible(true);
