@@ -20,14 +20,6 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: 'BIENVENUE ALLIANCE',
-    role: 'CEO // BLINKTECH',
-    phone: '+250735057868',
-    github: 'https://github.com/alliance74',
-    text: 'Edouard built our entire mobile infrastructure from scratch. His precision, reliability, and technical depth made him an essential partner for our startup.',
-    rating: 5,
-  },
-  {
     name: 'RUKUNDO FURAHA DIVIN',
     role: 'CEO // SICILY LABS',
     phone: '+250792050511',
