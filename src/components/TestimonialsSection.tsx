@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Phone, Github, Send } from 'lucide-react';
+import { Phone, Github, Send, Globe } from 'lucide-react';
 
 const testimonials = [
   {
@@ -32,6 +32,7 @@ const testimonials = [
     role: 'UI/UX DESIGNER // CO-FOUNDER BLINKTECH',
     phone: '+250793131491',
     github: '',
+    portfolio: 'https://www.kaneza.site/',
     text: 'Edouard brings rare combination of technical excellence and creative problem-solving. Our collaboration resulted in products that users love.',
     rating: 5,
   },
@@ -174,6 +175,17 @@ export default function TestimonialsSection() {
                     >
                       <Github className="w-3 h-3" />
                       <span>GITHUB</span>
+                    </a>
+                  )}
+                  {(t as any).portfolio && (
+                    <a
+                      href={(t as any).portfolio}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Globe className="w-3 h-3" />
+                      <span>PORTFOLIO</span>
                     </a>
                   )}
                 </div>
