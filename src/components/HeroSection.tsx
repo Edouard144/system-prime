@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import MagneticParticles from './MagneticParticles';
 import { Download } from 'lucide-react';
 
-const role = 'BACKEND & MOBILE DEVELOPER';
+const role = 'FULL STACK & MOBILE DEVELOPER';
 
 export default function HeroSection() {
   const [typed, setTyped] = useState('');
