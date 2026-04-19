@@ -9,15 +9,15 @@ const skillGroups = [
   },
   {
     label: 'BACKEND',
-    skills: ['NODE.JS', 'EXPRESS.JS', 'JAVA', 'SPRING BOOT', 'LARAVEL', 'DJANGO', 'WORDPRESS'],
+    skills: ['NODE.JS', 'EXPRESS.JS', 'SPRING BOOT', 'LARAVEL', 'DJANGO', 'WORDPRESS'],
   },
   {
     label: 'LANGUAGES',
-    skills: ['TYPESCRIPT', 'JAVASCRIPT', 'PYTHON', 'C++', 'C#'],
+    skills: ['TYPESCRIPT', 'JAVASCRIPT', 'PYTHON', 'C++', 'C#', 'SWIFT'],
   },
   {
     label: 'DATABASES',
-    skills: ['POSTGRESQL', 'MONGODB', 'SQLITE', 'NEONDB'],
+    skills: ['POSTGRESQL', 'MONGODB', 'SQLITE', 'NEONDB', 'REDIS'],
   },
   {
     label: 'TOOLS',
