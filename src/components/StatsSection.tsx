@@ -40,10 +40,10 @@ function WorldClock({ city, tz }: { city: string; tz: string }) {
 }
 
 const stats = [
-  { label: 'PROJECTS_DEPLOYED', value: 10, suffix: '+' },
-  { label: 'YEARS_CODING', value: 3, suffix: '' },
-  { label: 'TECH_STACKS', value: 15, suffix: '+' },
-  { label: 'EXPERIENCE_LEVEL', value: 2, suffix: '+ YRS' },
+  { label: 'PROJECTS_DEPLOYED', value: 15, suffix: '+' },
+  { label: 'YEARS_CODING', value: 5, suffix: '' },
+  { label: 'TECH_STACKS', value: 10, suffix: '+' },
+  { label: 'EXPERIENCE_LEVEL', value: 4, suffix: '+ YRS' },
 ];
 
 export default function StatsSection() {
