@@ -122,13 +122,13 @@ export default function HeroSection() {
           transition={{ delay: 2 }}
           className="mt-16 flex flex-wrap items-center justify-center gap-4 text-[10px] uppercase tracking-wider text-muted-foreground"
         >
-          <span>PROJECTS: <span className="text-primary">10+</span></span>
+          <span>PROJECTS: <span className="text-primary">15+</span></span>
           <span className="text-primary/30">//</span>
-          <span>STACKS: <span className="text-primary">15+</span></span>
+          <span>STACKS: <span className="text-primary">10+</span></span>
           <span className="text-primary/30">//</span>
-          <span>EXP: <span className="text-primary">2+ YRS</span></span>
+          <span>EXP: <span className="text-primary">4+ YRS</span></span>
           <span className="text-primary/30">//</span>
-          <span>STATUS: <span className="text-secondary">FREELANCER</span></span>
+          <span>STATUS: <span className="text-secondary">AVAILABLE FOR WORK</span></span>
         </motion.div>
       </div>
 
